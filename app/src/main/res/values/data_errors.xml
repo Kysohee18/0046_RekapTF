@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="evidence_read_error">Gambar tidak dapat dibuka. Pilih ulang bukti transfer.</string>
+    <string name="evidence_size_error">Gambar terlalu besar untuk jalur Baidu. Pilih JPG atau PNG yang lebih kecil dari 4 MB.</string>
+    <string name="evidence_format_error">Jalur Baidu membutuhkan gambar JPG atau PNG.</string>
+    <string name="evidence_ocr_error">Teks bukti tidak terbaca. Pilih gambar yang lebih jelas.</string>
+    <string name="evidence_unsupported_error">Pilih bukti transfer berhasil dari Livin’ by Mandiri.</string>
+    <string name="snapshot_size_error">Ukuran snapshot melebihi 4 MB. Simpan rentang rekap yang lebih pendek.</string>
+    <string name="snapshot_write_error">Snapshot gagal ditulis. Pilih tujuan lain dan coba lagi.</string>
+    <string name="snapshot_read_error">Snapshot gagal dibuka. Pilih berkas ulang.</string>
+    <string name="snapshot_invalid_error">Berkas ini bukan snapshot RekapTF yang valid.</string>
+</resources>

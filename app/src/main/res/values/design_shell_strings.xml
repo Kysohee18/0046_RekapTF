@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="shell_tab_evidence">Bukti</string>
+    <string name="shell_tab_transactions">Transaksi</string>
+    <string name="shell_tab_recap">Rekap</string>
+    <string name="shell_data_account">Data &amp; akun</string>
+    <string name="shell_month_total">Total pemasukan bulan ini</string>
+    <string name="shell_summary_error">Ringkasan pemasukan gagal dimuat.</string>
+</resources>
