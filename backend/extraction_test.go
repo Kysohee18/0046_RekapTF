@@ -90,6 +90,9 @@ func TestUnsupportedReceipt(t *testing.T) {
 		{"Livin' by Mandiri", "Transfer Tidak Sukses", "Rp125.000"},
 		{"Livin' by Mandiri", "Transfer", "Status pending", "Rp125.000"},
 		{"Livin' by Mandiri", "Transfer Berhasil", "Transaksi belum berhasil", "Rp125.000"},
+		{"Livin' by Mandiri", "Transaksi Berhasil", "Pembayaran QR", "Rp125.000"},
+		{"Livin' by Mandiri", "Transaksi Berhasil", "Nominal Transfer: Rp125.000", "Status pending"},
+		{"Bank Contoh", "Transaksi Berhasil", "Nominal Transfer: Rp125.000"},
 	} {
 		if _, err := relevantLines(lines); err != errUnsupportedEvidence {
 			t.Fatalf("unsupported fixture got error %v", err)
@@ -99,6 +102,11 @@ func TestUnsupportedReceipt(t *testing.T) {
 		if _, err := relevantLines([]string{"Livin’ by Mandiri", status, "Rp125.000"}); err != nil {
 			t.Fatalf("supported status %q got error %v", status, err)
 		}
+	}
+	lines := []string{"Livin’ by Mandiri", "Transaksi Berhasil", "Nominal Transfer: Rp125.000"}
+	got, err := relevantLines(lines)
+	if err != nil || len(got) != 1 || got[0] != "Nominal: Rp125.000" {
+		t.Fatalf("transfer receipt got %q and error %v", got, err)
 	}
 }
 

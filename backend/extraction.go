@@ -311,11 +311,16 @@ var (
 	amountLabel       = regexp.MustCompile(`(?i)^(?:jumlah(?: transfer)?|nominal(?: transfer)?|total(?: transfer)?)\b\s*[:\-]?\s*(.*)$`)
 	payerPattern      = regexp.MustCompile(`^[\p{L}][\p{L}\p{M} .’'\-]{0,119}$`)
 	referencePattern  = regexp.MustCompile(`^[[:alnum:]][[:alnum:]\-/.]{2,79}$`)
+
+	transactionSuccessPattern = regexp.MustCompile(`\btransaksi\s+berhasil\b`)
+	transferDetailPattern     = regexp.MustCompile(`(?im)^[ \t]*(?:nominal|jumlah|total|jenis|metode)[ \t]+transfer\b`)
 )
 
 func relevantLines(lines []string) ([]string, error) {
 	all := strings.ToLower(strings.Join(lines, " "))
-	if !strings.Contains(all, "livin") || !successPattern.MatchString(all) || failurePattern.MatchString(all) {
+	successfulTransfer := successPattern.MatchString(all) ||
+		(transactionSuccessPattern.MatchString(all) && transferDetailPattern.MatchString(strings.Join(lines, "\n")))
+	if !strings.Contains(all, "livin") || !successfulTransfer || failurePattern.MatchString(all) {
 		return nil, errUnsupportedEvidence
 	}
 	var selected []string
