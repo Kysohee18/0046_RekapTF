@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="design_evidence_preview">Pratinjau bukti</string>
+    <string name="design_evidence_select">Pilih bukti dari galeri</string>
+    <string name="design_evidence_reselect">Pilih ulang</string>
+    <string name="design_evidence_single">1 gambar</string>
+    <string name="design_evidence_local_title">Gambar tetap di perangkat</string>
+    <string name="design_evidence_local_body">Teks dibaca di perangkat. Hanya teks relevan dikirim ke AI DeepSeek untuk menyusun draf.</string>
+    <string name="design_evidence_cloud_title">Gambar diproses oleh layanan OCR</string>
+    <string name="design_evidence_loading">Memuat pratinjau…</string>
+    <string name="design_evidence_processing">Memproses bukti…</string>
+    <string name="design_evidence_unreadable">Teks tidak terbaca</string>
+    <string name="design_evidence_unreadable_hint">Pilih ulang gambar yang lebih jelas.</string>
+    <string name="design_demo_draft">Mode demo. Draf berisi data sintetis.</string>
+    <string name="design_draft_outside_total">Belum masuk rekap</string>
+    <string name="design_draft_review">Periksa draf</string>
+    <string name="design_income_title">Transaksi</string>
+    <string name="design_income_detail">Detail transaksi</string>
+    <string name="design_income_edit">Ubah transaksi</string>
+    <string name="design_income_confirmed">Terkonfirmasi</string>
+    <string name="design_income_no_amount">Nominal belum tersedia</string>
+    <string name="design_income_no_payer">Pengirim belum diisi</string>
+    <string name="design_income_date">Tanggal</string>
+    <string name="design_income_delete_title">Hapus pemasukan?</string>
+    <string name="design_income_delete_action">Hapus transaksi</string>
+    <string name="design_income_delete_effect">Transaksi dihapus dari rekap. Tindakan ini tidak dapat dibatalkan.</string>
+    <string name="design_income_delete_cancel">Batal, tetap simpan</string>
+    <string name="design_discard_title">Buang perubahan?</string>
+    <string name="design_discard_body">Perubahan pada formulir ini belum disimpan.</string>
+    <string name="design_discard_action">Buang perubahan</string>
+    <string name="design_discard_stay">Lanjut mengedit</string>
+    <string name="design_recap_transactions">Transaksi yang dihitung</string>
+    <string name="design_snapshot_title">Snapshot lokal</string>
+    <string name="design_snapshot_read_only">Hanya baca. Tidak menambah transaksi.</string>
+    <string name="design_snapshot_close">Tutup snapshot</string>
+    <string name="design_saved_recap_note">Rekap dihitung ulang saat dibuka.</string>
+    <string name="design_save_snapshot">Simpan snapshot</string>
+    <string name="design_category_name">Nama kategori</string>
+    <string name="design_payer_name">Nama pelanggan</string>
+    <string name="design_payers">Pelanggan / pembayar</string>
+    <string name="design_add_payer">Tambah pelanggan</string>
+    <string name="design_edit_payer">Ubah pelanggan</string>
+</resources>

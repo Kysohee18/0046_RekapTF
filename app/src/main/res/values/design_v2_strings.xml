@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Beranda L04 -->
+    <string name="home_welcome">Selamat datang</string>    <string name="home_add_evidence">Tambah bukti transfer</string>
+    <string name="home_composition">Komposisi kategori</string>
+    <string name="home_latest">Pemasukan terbaru</string>
+    <string name="home_all">Semua</string>
+    <string name="home_latest_empty">Belum ada pemasukan bulan ini</string>
+    <string name="home_latest_empty_body">Pemasukan muncul setelah draf dikonfirmasi.</string>
+    <string name="home_drafts_pending">%1$d draf belum masuk rekap</string>
+    <string name="home_drafts_clear">Tidak ada draf yang menunggu</string>
+    <string name="home_uncategorized">Tanpa kategori</string>
+
+    <!-- Data dan akun L15 -->
+    <string name="account_role_line">Satu akun untuk satu usaha</string>
+    <string name="account_single_role">Tanpa peran tambahan</string>
+    <string name="account_single_role_body">Data transaksi terpisah per akun. Tidak ada pemilihan peran, undangan anggota, atau manajemen tim.</string>
+
+    <!-- Daftar dan baris transaksi L10 -->
+    <string name="income_filter_all">Semua</string>
+    <string name="income_filter_review">Perlu diperiksa</string>
+    <string name="income_list_total">Total hasil filter</string>
+    <string name="income_list_count">%1$d transaksi</string>
+    <string name="income_count_label">Jumlah</string>
+    <string name="income_search_hint">Cari pelanggan atau nominal</string>
+    <string name="income_clear_filter">Hapus pencarian</string>
+    <string name="income_search_empty_body">Ubah kata kunci atau hapus pencarian.</string>
+    <string name="income_drafts_empty_body">Draf dibuat dari satu bukti transfer yang diproses.</string>
+    <string name="income_source_note">Label sumber adalah petunjuk format bukti, bukan verifikasi bank.</string>
+    <string name="design_income_no_amount_date">Tanggal belum tersedia</string>
+    <string name="income_group_empty">Belum ada transaksi pada filter ini</string>
+    <string name="income_id_label">ID transaksi</string>
+    <string name="income_source_label">Sumber bukti</string>
+    <string name="income_open_detail">Buka detail</string>
+
+    <!-- Bukti L06, L07, L23 -->
+    <string name="evidence_file_label">Nama berkas</string>
+    <string name="evidence_preview_meta">%1$s · 1 gambar</string>
+    <string name="evidence_step_read">Teks terbaca</string>
+    <string name="evidence_step_compose">Menyusun draf</string>
+    <string name="evidence_step_review">Periksa dan konfirmasi</string>
+    <string name="evidence_unreadable_title">Teks belum bisa dibaca</string>
+    <string name="evidence_unreadable_body">Nominal dan tanggal tidak terbaca. Draf belum dibuat.</string>
+    <string name="evidence_unreadable_tip">Gunakan screenshot yang utuh, tidak buram, dan tidak terpotong.</string>
+    <string name="evidence_unreadable_reselect">Pilih ulang dari galeri</string>
+    <string name="evidence_unreadable_back">Kembali ke daftar bukti</string>
+    <string name="evidence_local_note">Gambar tetap di perangkat</string>
+    <string name="evidence_pick_hint">Satu bukti untuk satu draf. Gambar tidak diunggah ke server.</string>
+
+    <!-- Draf dan formulir L08, L12 -->
+    <string name="form_section_amount">Nominal dan tanggal</string>
+    <string name="form_section_links">Pelanggan dan kategori</string>
+    <string name="form_section_note">Catatan tambahan</string>
+    <string name="draft_review_hint">Periksa nominal dan tanggal sebelum konfirmasi. Draf belum masuk rekap.</string>
+    <string name="form_unsaved_hint">Perubahan belum disimpan</string>
+
+    <!-- Rekap L13, L14, L20, L21 -->
+    <string name="recap_period">Periode</string>
+    <string name="recap_saved_hint">Rekap tersimpan hanya menyimpan nama dan filter, lalu menghitung ulang dari transaksi terkonfirmasi.</string>
+    <string name="recap_snapshot_note">Snapshot adalah hasil tetap. Membukanya tidak menambah atau mengubah transaksi.</string>
+    <string name="snapshot_generated">Dibuat</string>
+    <string name="snapshot_business">Usaha saat snapshot dibuat</string>
+
+    <!-- Kategori dan pelanggan L16-L19 -->
+    <string name="directory_total">%1$d data</string>
+    <string name="directory_related">Transaksi terkait</string>
+    <string name="directory_add_field">Tambah field</string>
+    <string name="category_related_total">Total terkonfirmasi periode ini</string>
+    <string name="payer_related_total">Total terkonfirmasi</string>
+</resources>
