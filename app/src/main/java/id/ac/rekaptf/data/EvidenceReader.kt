@@ -168,6 +168,8 @@ internal class EvidenceReader(context: Context) {
 }
 
 private val successPattern = Regex("""\b(?:transfer(?:\s+bi[- ]fast)?\s+(?:berhasil|sukses|successful)|successful\s+transfer)\b""")
+private val transactionSuccessPattern = Regex("""\btransaksi\s+berhasil\b""")
+private val transferDetailPattern = Regex("""(?im)^[ \t]*(?:nominal|jumlah|total|jenis|metode)[ \t]+transfer\b""")
 private val failurePattern = Regex("""\b(?:(?:tidak|belum|not)\s+(?:berhasil|sukses|successful)|gagal|failed|unsuccessful|tertunda|pending)\b""")
 private val amountPattern = Regex("""\b(?:idr|rp)\.?\s*\d[\d.,]{0,24}""", RegexOption.IGNORE_CASE)
 private val datePattern = Regex("""\b(?:\d{4}[-/]\d{1,2}[-/]\d{1,2}|\d{1,2}[-/]\d{1,2}[-/]\d{2,4}|\d{1,2}\s+\p{L}{3,12}\s+\d{4})\b""")
@@ -182,7 +184,10 @@ private fun relevantEvidenceText(text: String): String {
     if (text.isBlank()) throw EvidenceError(R.string.evidence_ocr_error)
     val lines = text.take(32_768).lineSequence().map(String::trim).filter(String::isNotBlank).toList()
     val joined = lines.joinToString(" ").lowercase(Locale.ROOT)
-    if ("livin" !in joined || !successPattern.containsMatchIn(joined) || failurePattern.containsMatchIn(joined)) {
+    val successfulTransfer = successPattern.containsMatchIn(joined) ||
+        (transactionSuccessPattern.containsMatchIn(joined) &&
+            transferDetailPattern.containsMatchIn(lines.joinToString("\n")))
+    if ("livin" !in joined || !successfulTransfer || failurePattern.containsMatchIn(joined)) {
         throw EvidenceError(R.string.evidence_unsupported_error)
     }
     val fields = linkedSetOf<String>()
