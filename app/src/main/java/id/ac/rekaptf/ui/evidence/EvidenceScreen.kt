@@ -45,11 +45,11 @@ import id.ac.rekaptf.ui.components.ForwardGlyph
 import id.ac.rekaptf.ui.components.InfoPanel
 import id.ac.rekaptf.ui.components.PageTitle
 import id.ac.rekaptf.ui.components.PrimaryAction
+import id.ac.rekaptf.ui.components.Progress
 import id.ac.rekaptf.ui.components.ScreenBar
 import id.ac.rekaptf.ui.components.SecondaryAction
 import id.ac.rekaptf.ui.components.SectionHeader
 import id.ac.rekaptf.ui.components.StatusBadge
-import id.ac.rekaptf.ui.components.StepRow
 import id.ac.rekaptf.ui.components.WorkFeedback
 import id.ac.rekaptf.ui.components.WorkOutcome
 import id.ac.rekaptf.ui.components.WorkOutcomeEffect
@@ -119,7 +119,7 @@ internal fun EvidenceRoute(
                 when {
                     unsupported -> R.string.evidence_unsupported_title
                     unreadable -> R.string.evidence_unreadable_title
-                    state.busy -> R.string.design_evidence_processing
+                    state.busy -> R.string.work_evidence
                     selected != null -> R.string.design_evidence_preview
                     else -> R.string.work_evidence
                 },
@@ -141,12 +141,13 @@ internal fun EvidenceRoute(
                 }
             }
             state.busy -> {
-                WorkFeedback(state)
-                Column(Modifier.fillMaxWidth()) {
-                    StepRow(1, stringResource(R.string.evidence_step_read), active = true, done = false)
-                    StepRow(2, stringResource(R.string.evidence_step_compose), active = false, done = false)
-                    StepRow(3, stringResource(R.string.evidence_step_review), active = false, done = false)
-                }
+                // OCR dan permintaan AI berjalan dalam satu operasi, jadi status per tahap belum tersedia.
+                Progress()
+                Text(
+                    stringResource(R.string.design_evidence_processing),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
                 SecondaryAction(onClick = model::cancel, modifier = Modifier.fillMaxWidth()) {
                     Text(stringResource(R.string.work_cancel_process))
                 }
