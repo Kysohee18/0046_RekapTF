@@ -101,7 +101,8 @@ internal fun EvidenceRoute(
     BackHandler(enabled = state.busy) { model.cancel() }
     val chosen = selected
     val preview = (state.value as? EvidencePreview)?.takeIf { it.selection == selection }?.bitmap
-    val unreadable = state.error?.text in setOf(R.string.evidence_ocr_error, R.string.evidence_unsupported_error)
+    val unsupported = state.error?.text == R.string.evidence_unsupported_error
+    val unreadable = state.error?.text == R.string.evidence_ocr_error
     val pickImage = { picker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)) }
     val local = BuildConfig.REKAP_LOCAL_OCR
 
@@ -116,6 +117,7 @@ internal fun EvidenceRoute(
         PageTitle(
             stringResource(
                 when {
+                    unsupported -> R.string.evidence_unsupported_title
                     unreadable -> R.string.evidence_unreadable_title
                     state.busy -> R.string.design_evidence_processing
                     selected != null -> R.string.design_evidence_preview
@@ -124,10 +126,10 @@ internal fun EvidenceRoute(
             ),
         )
         when {
-            unreadable -> {
+            unsupported || unreadable -> {
                 InfoPanel(
-                    title = stringResource(R.string.design_evidence_unreadable),
-                    body = stringResource(R.string.evidence_unreadable_body),
+                    title = stringResource(if (unsupported) R.string.work_evidence else R.string.design_evidence_unreadable),
+                    body = stringResource(if (unsupported) R.string.evidence_unsupported_error else R.string.evidence_unreadable_body),
                 )
                 EmptyState(
                     title = stringResource(R.string.evidence_unreadable_tip),
