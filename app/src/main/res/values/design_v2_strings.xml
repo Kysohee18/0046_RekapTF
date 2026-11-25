@@ -40,6 +40,7 @@
     <string name="evidence_step_compose">Menyusun draf</string>
     <string name="evidence_step_review">Periksa dan konfirmasi</string>
     <string name="evidence_unreadable_title">Teks belum bisa dibaca</string>
+    <string name="evidence_unsupported_title">Format bukti belum didukung</string>
     <string name="evidence_unreadable_body">Nominal dan tanggal tidak terbaca. Draf belum dibuat.</string>
     <string name="evidence_unreadable_tip">Gunakan screenshot yang utuh, tidak buram, dan tidak terpotong.</string>
     <string name="evidence_unreadable_reselect">Pilih ulang dari galeri</string>
