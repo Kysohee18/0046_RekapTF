@@ -69,7 +69,7 @@ Target 40–70 per fitur mengikuti [aturan Git](rules.md#git-dan-pengumpulan). P
 | 23 Nov 2026 | 1 | Layar kategori dan pengirim | Navigasi Compose, daftar, pencarian nama, editor, dan konfirmasi hapus terhubung ke API. Client memperbarui token akses ketika sesi perlu disegarkan. | Pemeriksaan statis Android lulus. `go vet ./...`, `go test -count=1 -v ./...`, build Go dengan `-buildvcs=false` dan HTTP loopback lulus untuk aturan cari nama. Uji APK dan PostgreSQL masih terbuka. | `2bed8e8` | Commit pengembangan. API diuji lokal. |
 | 23 Nov 2026 | 1 | Perbaikan hasil review | Tambah konfirmasi kata sandi, akhiri sesi lokal ketika server tidak terjangkau, gunakan label deskripsi kategori dan catatan pengirim, serta pertahankan dua penanda akun dalam uji isolasi. | Review awal `FAIL`. Pemeriksaan ulang pada perbaikan memberi `PASS WITH LIMITS`. Diff Git, resource Android, dan pemeriksaan Go lulus dalam lingkup sumber dan API memori. | `54503f3` | Commit pengembangan. Uji perangkat dan PostgreSQL masih terbuka. |
 
-Tujuh commit implementasi di atas tercatat di repo pengembangan, termasuk tiga yang menangani akun dan dua yang mengerjakan kategori serta pengirim. Satu commit perbaikan mencakup lintas fitur dan dihitung satu kali. Catatan panduan APK tercatat terpisah pada `02f1246`. Fitur draf, transaksi, dan rekap tersimpan masih memiliki 0 commit implementasi Sprint 1. Target 40–70 per fitur masih terbuka karena pekerjaan baru mencakup irisan awal. Folder pengumpulan aktif masih kosong sehingga jumlah commit pengumpulan aktif adalah 0.
+Tujuh commit implementasi di atas tercatat di repo pengembangan, termasuk tiga yang menangani akun dan dua yang mengerjakan kategori serta pengirim. Satu commit perbaikan mencakup lintas fitur dan dihitung satu kali. Catatan panduan APK tercatat terpisah pada `02f1246`. Fitur draf, transaksi, dan rekap tersimpan masih memiliki 0 commit implementasi Sprint 1. Target 40–70 per fitur masih terbuka karena pekerjaan baru mencakup irisan awal. Hash pada tabel ini adalah commit pengembangan di `rekap-utama` dan tidak dapat di-resolve di repo pengumpulan karena isinya dipindahkan sebagai potongan berkas; padanan publikasinya ada pada tabel Pengumpulan Sprint 1 ke GitHub di bawah.
 
 ## Implementasi menuju uji pra-produksi
 
@@ -93,6 +93,8 @@ Kolom hash untuk irisan di bawah diisi setelah ada commit pengumpulan yang dioto
 
 Pekerjaan minggu 23–29 November 2026 menyelaraskan tampilan Compose dengan token dan alur layar pada PRD desain RekapTF v1.0. Bukti di bawah adalah pemeriksaan build lokal tanpa APK: `:app:compileDebugKotlin` dan `:app:processDebugResources` lulus pada Gradle 9.4.1 mode `--offline`, serta `go test -buildvcs=false -count=1 ./...` lulus. Uji perangkat, TalkBack, dan tangkapan layar belum dijalankan.
 
+Catatan: hash pada tabel di bawah berasal dari riwayat `main` lokal lama yang tidak dipublikasikan. Padanan yang dipublikasikan: `ddba0e6` (token dan komponen), `d5e26f3` (Beranda), `43b4258` (kerangka bukti, rekap, dan draf).
+
 | Tanggal | Sprint | Fitur | Perubahan | Bukti uji | Hash commit | Status |
 |---|---|---|---|---|---|---|
 | 24 Nov 2026 | 1 | Design system | Token warna, jarak, bentuk, dan ukuran sesuai PRD 5.1–5.4. Tema dipaksa terang agar identitas desain tidak berubah oleh tema sistem. Komponen dasar: bilah layar, panel info, badge status, kartu hero, tile komposisi, pemilih chip, baris metadata, dan tahap pemrosesan. | `:app:compileDebugKotlin` dan `:app:processDebugResources` lulus. Aset Inter belum ada sehingga tipografi memakai fallback sistem dan dicatat sebagai batas. | `11db578` | Commit pengumpulan lokal |
@@ -105,35 +107,31 @@ Pekerjaan minggu 23–29 November 2026 menyelaraskan tampilan Compose dengan tok
 
 Batas yang masih terbuka: aset Inter belum tersedia; field dinamis kategori dan pelanggan belum didukung backend sehingga editor hanya menyimpan nama dan catatan; total per kategori/pelanggan belum dihitung; hapus transaksi masih berupa dialog, bukan layar L22 tersendiri; tautan bukti asli pada detail belum tersedia karena referensi gambar hanya disimpan selama proses.
 
-### Pemindahan ke folder pengumpulan
+### Pengumpulan Sprint 1 ke GitHub
 
-`rekap-repo` diinisialisasi sebagai repo Git lokal pada `main` dan menerima irisan fitur, aksesibilitas, serta dokumen berikut. Setiap commit adalah potongan berkas yang bermakna; commit tidak di-push ke remote dan tidak diuji satu per satu.
+Isi `rekap-utama` disalin massal dengan `tar` ke `rekap-repo`, lalu dipotong menjadi berkas per fitur. Riwayat publikasi disusun sebagai branch orphan lokal `sprint-1` dari kondisi kerja akhir dan dipush ke `refs/heads/main` pada `https://github.com/Kysohee18/0046_RekapTF.git`. Remote tadinya kosong, jadi push pertama tidak menimpa commit mana pun. `main` lokal lama (25 commit, tip `a24ea56`) tidak dipublikasikan karena memuat irisan Sprint 2 dan 3.
 
 | Hash | Isi |
 |---|---|
-| `bd4e06f` | Aturan proyek dan berkas dasar |
-| `1933332` | Scaffold Compose, version catalog, Gradle Wrapper |
-| `8c42a85` | Konfigurasi endpoint debug emulator dan USB |
-| `561cce9` | Autentikasi JWT dan isolasi akun |
-| `012b205` | Ekstraksi draf dari teks OCR |
-| `b855422` | CRUDS kategori, pelanggan, rekap tersimpan |
-| `9aef04d` | Uji Go isolasi akun dan konfirmasi serentak |
-| `0b52f9b` | Kontrak API backend |
-| `495d823` | REST client dan repository Android |
-| `59ee494` | OCR lokal dan snapshot JSON |
-| `11db578` | Design system Compose |
-| `a1fedbd` | Layar Masuk dan Daftar |
-| `57264ea` | Navigasi empat tab |
-| `d992626` | Beranda |
-| `4bdb040` | Alur bukti |
-| `6947004` | Draf dan transaksi |
-| `c992d9b` | Rekap dan snapshot |
-| `e14e719` | Kategori dan pelanggan |
-| `c86bcb6` | Skrip debug USB |
-| `a1fc796` | Glyph panah dekoratif |
-| `a38688e` | Semantik panah pada layar |
-| `ee3f8cd` | Panduan agent, aturan, log, README |
-| `8d003dc` | Fixture bukti dan diagram alur |
+| `8933723` | Scaffold Compose, katalog versi, Gradle Wrapper, diagram aktivitas |
+| `1211596` | Konfigurasi endpoint debug emulator dan USB |
+| `16e2e91` | Sesi JWT `UMKM_USER`, profil, penyimpanan |
+| `cab0366` | CRUDS kategori dan pengirim |
+| `1d00045` | Uji isolasi akun, CRUDS lintas akun, nama unik |
+| `05c8870` | Klien REST dan repository Android |
+| `ddba0e6` | Token desain, tipografi, komponen, string |
+| `9d95268` | Layar Masuk dan Daftar UMKM |
+| `f3cfc94` | Navigasi empat tab, pemulihan state, `MainActivity` |
+| `9f613ab` | Daftar, detail, editor transaksi |
+| `368b44c` | CRUDS kategori dan pelanggan |
+| `d5e26f3` | Beranda ringkasan bulanan |
+| `ae4a1d9` | Panduan agent, aturan, README, log |
+| `2538f13` | Skrip pemeriksaan API lokal dan ADB reverse |
+| `43b4258` | Kerangka OCR, bukti, dan rekap untuk sprint berikutnya |
+
+Jumlah commit yang benar-benar ada di GitHub saat pengumpulan pertama: 15, tip `43b42582380ef11345ecbdd53dfa698d8ff340d9`. Kecocokan hash diverifikasi dengan `git ls-remote origin refs/heads/main`. Berkas gambar `docs/fixtures/**` milik Sprint 2 dan riwayat `main` lokal lama tidak disertakan.
+
+**Batas riwayat.** Commit dalam riwayat publikasi adalah potongan berkas, bukan build bertahap: `AndroidManifest.xml` sudah menyebut `.MainActivity` pada `8933723` sedangkan kelasnya masuk pada `f3cfc94`, sehingga hanya tip yang berdiri sendiri. Kompilasi yang tercatat di log ini dijalankan pada kondisi kerja akhir di `rekap-utama`, bukan per commit.
 
 ## Pekerjaan aktif dan tindakan berikutnya
 
